@@ -1,0 +1,80 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and progress data.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "xp": { "type": "number" },
+        "level": { "type": "number" },
+        "grade": { "type": "string", "enum": ["7", "10", "12"] },
+        "streak": { "type": "number" },
+        "lastActive": { "type": "string", "format": "date-time" },
+        "achievements": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["uid", "displayName", "email", "xp", "level", "grade"]
+    },
+    "Test": {
+      "title": "Test",
+      "description": "A pre-defined test containing multiple sections and questions.",
+      "type": "object",
+      "properties": {
+        "testId": { "type": "string" },
+        "grade": { "type": "number" },
+        "sections": { "type": "array" }
+      },
+      "required": ["testId", "grade", "sections"]
+    },
+    "Quiz": {
+      "title": "Quiz",
+      "description": "A quiz session record.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "category": { "type": "string" },
+        "score": { "type": "number" },
+        "totalQuestions": { "type": "number" },
+        "xpEarned": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "grade": { "type": "string" }
+      },
+      "required": ["userId", "category", "score", "totalQuestions", "xpEarned", "timestamp"]
+    },
+    "Lobby": {
+      "title": "Lobby",
+      "description": "A multiplayer game lobby.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "hostId": { "type": "string" },
+        "status": { "type": "string", "enum": ["waiting", "playing", "finished"] },
+        "players": { "type": "object" },
+        "questions": { "type": "array" },
+        "currentQuestionIndex": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "hostId", "status", "players", "questions", "currentQuestionIndex", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles."
+    },
+    "/quizzes/{quizId}": {
+      "schema": "Quiz",
+      "description": "Quiz results history."
+    },
+    "/lobbies/{lobbyId}": {
+      "schema": "Lobby",
+      "description": "Multiplayer game lobbies."
+    },
+    "/tests/{testId}": {
+      "schema": "Test",
+      "description": "Pre-defined tests and questions."
+    }
+  }
+}

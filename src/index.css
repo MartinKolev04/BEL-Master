@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #58cc02;
+  --color-primary-dark: #46a302;
+  --color-secondary: #1cb0f6;
+  --color-accent: #ffc800;
+  --color-error: #ff4b4b;
+  --color-bg-light: #ffffff;
+  --color-bg-dark: #131f24;
+  --color-text-light: #4b4b4b;
+  --color-text-dark: #ffffff;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --bg: var(--color-bg-light);
+  --text: var(--color-text-light);
+  color-scheme: light dark;
+}
+
+.dark {
+  --bg: var(--color-bg-dark);
+  --text: var(--color-text-dark);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mobile-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.duo-button {
+  @apply relative inline-flex items-center justify-center px-6 py-3 font-bold text-white transition-all duration-150 rounded-xl active:translate-y-1;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+}
+
+.duo-button:active {
+  box-shadow: 0 0 0 rgba(0,0,0,0.2);
+}
+
+.duo-card {
+  @apply p-4 border-2 rounded-2xl border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all;
+}
+
+.duo-card-active {
+  @apply border-secondary bg-secondary/10 dark:bg-secondary/20;
+}
+
+.dark .text-gray-600 {
+  @apply text-gray-400;
+}
+
+.dark .text-gray-500 {
+  @apply text-gray-400;
+}
+
+.dark .text-gray-400 {
+  @apply text-gray-500;
+}
+
+.dark .bg-gray-50 {
+  @apply bg-gray-800/50;
+}
+
+.dark .bg-gray-100 {
+  @apply bg-gray-800;
+}
+
+.dark .border-gray-100 {
+  @apply border-gray-800;
+}
+
+.dark .border-gray-200 {
+  @apply border-gray-700;
+}
+
