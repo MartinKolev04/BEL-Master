@@ -1,0 +1,81 @@
+import {
+  ArrowLeft,
+  Award,
+  BookOpen,
+  Camera,
+  CheckCircle2,
+  ChevronRight,
+  Clock,
+  Flame,
+  Home,
+  LogOut,
+  Menu,
+  PenTool,
+  Search,
+  Settings,
+  Star,
+  Trophy,
+  User,
+  Users,
+  X,
+  XCircle,
+  Zap,
+} from 'lucide-react-native';
+import { cssInterop } from 'nativewind';
+
+const ALL = {
+  ArrowLeft,
+  Award,
+  BookOpen,
+  Camera,
+  CheckCircle2,
+  ChevronRight,
+  Clock,
+  Flame,
+  Home,
+  LogOut,
+  Menu,
+  PenTool,
+  Search,
+  Settings,
+  Star,
+  Trophy,
+  User,
+  Users,
+  X,
+  XCircle,
+  Zap,
+};
+
+Object.values(ALL).forEach((Icon) => {
+  cssInterop(Icon, {
+    className: {
+      target: 'style',
+      nativeStyleToProp: { color: true },
+    },
+  });
+});
+
+export {
+  ArrowLeft,
+  Award,
+  BookOpen,
+  Camera,
+  CheckCircle2,
+  ChevronRight,
+  Clock,
+  Flame,
+  Home,
+  LogOut,
+  Menu,
+  PenTool,
+  Search,
+  Settings,
+  Star,
+  Trophy,
+  User,
+  Users,
+  X,
+  XCircle,
+  Zap,
+};

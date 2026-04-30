@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "БЕЛ Мастер",
+    "slug": "bel-master",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "belmaster",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.belmaster.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Приложението използва камерата, за да сканира текст за проверка на правописа.",
+        "NSPhotoLibraryUsageDescription": "Приложението използва снимките, за да сканира текст за проверка на правописа."
+      }
+    },
+    "android": {
+      "package": "com.belmaster.app",
+      "permissions": ["android.permission.CAMERA", "android.permission.READ_EXTERNAL_STORAGE"]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Приложението използва камерата, за да сканира текст за проверка на правописа."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Приложението използва снимките, за да сканира текст за проверка на правописа.",
+          "cameraPermission": "Приложението използва камерата, за да сканира текст за проверка на правописа."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
