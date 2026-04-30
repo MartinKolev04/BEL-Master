@@ -1,20 +1,56 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# БЕЛ Мастер
 
-# Run and deploy your AI Studio app
+React Native (Expo) + Expo Router + NativeWind app for preparing for the Bulgarian Language and Literature exams (7th, 10th and 12th grade).
 
-This contains everything you need to run your app locally.
+## Stack
 
-View your app in AI Studio: https://ai.studio/apps/7e6f6c88-8a57-48ef-afb6-777ad998e6dd
+- Expo SDK 51 with Expo Router (file-based navigation under `app/`)
+- React Native 0.74 + TypeScript
+- NativeWind v4 (Tailwind classes on React Native components)
+- Firebase (Auth + Firestore) with AsyncStorage persistence
+- Google Gemini for spell-checking and quiz generation
+- Moti / Reanimated for animations
+- expo-image-picker for the camera-based text scanner
 
-## Run Locally
+## Layout
 
-**Prerequisites:**  Node.js
+```
+app/                       Expo Router file tree
+  _layout.tsx              Providers + ErrorBoundary + root Stack
+  index.tsx                Auth-state redirector
+  (auth)/                  Unauthenticated routes
+  (tabs)/                  Authenticated tab navigator
+  onboarding.tsx
+  multiplayer.tsx
+  quiz/[category].tsx
 
+src/
+  components/              UI primitives + ErrorBoundary + icon shim
+  constants/               grades, categories, achievements, admin
+  data/                    static seeds (literary works, initial test)
+  errors/                  AppError + typed subclasses
+  hooks/                   useQuestions, useScanner, useLeaderboard, …
+  i18n/                    bg/en dictionaries + I18nProvider
+  navigation/              ROUTES + custom BottomTabBar
+  providers/               AppProviders (compose all contexts)
+  screens/                 Auth, Onboarding, Home, Library, Leaderboard,
+                           Profile, Scanner, Multiplayer, Quiz
+  services/                ai/GeminiService, firebase/{client,auth,firestore},
+                           repositories/* (OOP repos)
+  store/                   AuthContext, ThemeContext, UserProfileContext
+  theme/                   colour palette + spacing tokens
+  types/                   shared TS types
+  utils/                   cn helper
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Run locally
+
+Prerequisites: Node 18+, an iOS simulator / Android emulator, or the Expo Go app.
+
+1. `npm install`
+2. Set `EXPO_PUBLIC_GEMINI_API_KEY` in `.env.local`
+3. `npm run start` and open in iOS, Android, or web
+
+## Build
+
+- `npm run ios` / `npm run android` / `npm run web`
